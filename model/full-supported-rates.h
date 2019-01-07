@@ -33,7 +33,8 @@ namespace ns3 {
  * stations which need 2 rates each from Clauses 15 and 18, and then 8
  * from Clause 19.
  */
-#define MAX_SUPPORTED_RATES (12)
+// #define MAX_SUPPORTED_RATES (12)
+static const uint8_t MAX_SUPPORTED_RATES = 12;
 
 class FullSupportedRates;
 
@@ -94,11 +95,11 @@ class FullSupportedRates : public FullWifiInformationElement
 public:
   FullSupportedRates ();
 
-  void AddSupportedRate (uint32_t bs);
-  void SetBasicRate (uint32_t bs);
+  void AddSupportedRate (uint64_t bs);
+  void SetBasicRate (uint64_t bs);
 
-  bool IsSupportedRate (uint32_t bs) const;
-  bool IsBasicRate (uint32_t bs) const;
+  bool IsSupportedRate (uint64_t bs) const;
+  bool IsBasicRate (uint64_t bs) const;
 
   uint8_t GetNRates (void) const;
   uint32_t GetRate (uint8_t i) const;
