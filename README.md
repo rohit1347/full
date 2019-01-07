@@ -13,3 +13,8 @@ Resources:
 [Old Git Repo](https://github.com/wenjie-zhou/full-duplex-ns3)
 
 [Full Duplex Radios](https://web.stanford.edu/~skatti/pubs/sigcomm13-fullduplex.pdf)
+
+TO DO:
+---
+- Generate new python bindings.
+- Get scratch examples operational.
