@@ -16,5 +16,6 @@ Resources:
 
 TO DO:
 ---
+- ~~Modify source files with respect to ns3 API changes.~~
 - Generate new python bindings.
 - Get scratch examples operational.
