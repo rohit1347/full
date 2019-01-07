@@ -33,7 +33,7 @@ FullSupportedRates::FullSupportedRates ()
 }
 
 void
-FullSupportedRates::AddSupportedRate (uint32_t bs)
+FullSupportedRates::AddSupportedRate (uint64_t bs)
 {
   NS_ASSERT (m_nRates < MAX_SUPPORTED_RATES);
   if (IsSupportedRate (bs))
@@ -45,7 +45,7 @@ FullSupportedRates::AddSupportedRate (uint32_t bs)
   NS_LOG_DEBUG ("add rate=" << bs << ", n rates=" << (uint32_t)m_nRates);
 }
 void
-FullSupportedRates::SetBasicRate (uint32_t bs)
+FullSupportedRates::SetBasicRate (uint64_t bs)
 {
   uint8_t rate = bs / 500000;
   for (uint8_t i = 0; i < m_nRates; i++)
@@ -65,7 +65,7 @@ FullSupportedRates::SetBasicRate (uint32_t bs)
   SetBasicRate (bs);
 }
 bool
-FullSupportedRates::IsBasicRate (uint32_t bs) const
+FullSupportedRates::IsBasicRate (uint64_t bs) const
 {
   uint8_t rate = (bs / 500000) | 0x80;
   for (uint8_t i = 0; i < m_nRates; i++)
@@ -78,7 +78,7 @@ FullSupportedRates::IsBasicRate (uint32_t bs) const
   return false;
 }
 bool
-FullSupportedRates::IsSupportedRate (uint32_t bs) const
+FullSupportedRates::IsSupportedRate (uint64_t bs) const
 {
   uint8_t rate = bs / 500000;
   for (uint8_t i = 0; i < m_nRates; i++)
