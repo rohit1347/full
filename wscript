@@ -1,8 +1,8 @@
 ## -*- Mode: python; py-indent-offset: 4; indent-tabs-mode: nil; coding: utf-8; -*-
 
 def build(bld):
-    obj = bld.create_ns3_module('full', ['network', 'propagation','network', 'internet', 'applications'])
-    obj.source = [
+    module = bld.create_ns3_module('full', ['network', 'propagation','network', 'internet', 'applications'])
+    module.source = [
         'model/full-wifi-information-element.cc',
         'model/full-wifi-information-element-vector.cc',
         'model/full-wifi-channel.cc',
@@ -68,8 +68,8 @@ def build(bld):
         'helper/full-duplex-library.cc',
         ]
 
-    obj_test = bld.create_ns3_module_test_library('full')
-    obj_test.source = [
+    module_test = bld.create_ns3_module_test_library('full')
+    module_test.source = [
         'test/full-block-ack-test-suite.cc',
         'test/full-dcf-manager-test.cc',
         'test/full-tx-duration-test.cc',
@@ -143,8 +143,8 @@ def build(bld):
         ]
 
     if bld.env['ENABLE_GSL']:
-        obj.use.extend(['GSL', 'GSLCBLAS', 'M'])
-        obj_test.use.extend(['GSL', 'GSLCBLAS', 'M'])
+        module.use.extend(['GSL', 'GSLCBLAS', 'M'])
+        module_test.use.extend(['GSL', 'GSLCBLAS', 'M'])
 
     # if (bld.env['ENABLE_EXAMPLES']):
     #     bld.add_subdirs('examples')
