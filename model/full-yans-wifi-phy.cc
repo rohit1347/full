@@ -605,6 +605,17 @@ FullYansWifiPhy::SendPacket (Ptr<const Packet> packet, FullWifiMode txMode, Full
    *    prevent it.
    *  - we are idle
    */
+  // Debugging Code
+  //std::cout<<txMode<<std::endl;
+  if(!(!m_sendState->IsStateTx () && !m_sendState->IsStateSwitching ()))
+  {
+    std::cout<<"FALSE"<<std::endl;
+    (m_sendState->IsStateTx())?(std::cout<<"True"<<std::endl):(std::cout<<"False"<<std::endl);
+    (m_sendState->IsStateSwitching())?(std::cout<<"True"<<std::endl):(std::cout<<"False"<<std::endl);
+    std::cout<<txMode<<std::endl;
+  }
+  
+  
   NS_ASSERT (!m_sendState->IsStateTx () && !m_sendState->IsStateSwitching ());
 
   Time txDuration = CalculateTxDuration (packet->GetSize (), txMode, preamble);

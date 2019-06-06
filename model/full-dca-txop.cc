@@ -672,7 +672,10 @@ FullDcaTxop::NotifyRxStartNow (Time duration, Ptr<const Packet> packet, FullWifi
                 if (duration > delay)
                   {
                     NS_LOG_INFO("send busytone");
-                    m_returnEvent = Simulator::Schedule (delay, &FullDcaTxop::SendBusyTone, this, duration - delay, receiveHdr.GetAddr2 ());
+                    //std::cout <<"delay" <<delay<<std::endl;
+                    /*BugFix : Shruti - Change the scheduling of busytone to now from the delay, otherwise the code crashes*/
+                    m_returnEvent = Simulator::ScheduleNow (&FullDcaTxop::SendBusyTone, this, duration - delay, receiveHdr.GetAddr2 ());
+                    //m_returnEvent = Simulator::Schedule (delay, &FullDcaTxop::SendBusyTone, this, duration - delay, receiveHdr.GetAddr2 ());
                   }
               }
           }
@@ -935,6 +938,10 @@ FullDcaTxop::EndTxNoAck (void)
 {
   NS_LOG_FUNCTION (this);
   NS_LOG_DEBUG ("a transmission that did not require an ACK just finished");
+  if (!m_txOkCallback.IsNull ())
+        {
+          m_txOkCallback (m_currentHdr);
+        }
   m_currentPacket = 0;
   m_dcf->ResetCw ();
   m_dcf->StartBackoffNow (m_rng->GetNext (0, m_dcf->GetCw ()));

@@ -48,12 +48,24 @@ typedef uint8_t FullWifiInformationElementId;
  * 802.11-2007. See the comments for WifiInformationElementId - this could
  * probably be done in a considerably tidier manner.
  */
-#define IE_SSID                                ((FullWifiInformationElementId)0)
-#define IE_SUPPORTED_RATES                     ((FullWifiInformationElementId)1)
-#define IE_FH_PARAMETER_SET                    ((FullWifiInformationElementId)2)
+#ifndef IE_SSID
+  #define IE_SSID                                ((FullWifiInformationElementId)0)
+#endif
+#ifndef IE_SUPPORTED_RATES
+  #define IE_SUPPORTED_RATES                     ((FullWifiInformationElementId)1)
+#endif
+#ifndef IE_FH_PARAMETER_SET
+  #define IE_FH_PARAMETER_SET                    ((FullWifiInformationElementId)2)
+#endif
 #define IE_DS_PARAMETER_SET                    ((FullWifiInformationElementId)3)
-#define IE_CF_PARAMETER_SET                    ((FullWifiInformationElementId)4)
-#define IE_TIM                                 ((FullWifiInformationElementId)5)
+#ifndef IE_CF_PARAMETER_SET
+  #define IE_CF_PARAMETER_SET                    ((FullWifiInformationElementId)4)
+#endif 
+#ifndef IE_TIM
+  #define IE_TIM                                 ((FullWifiInformationElementId)5)
+#endif
+#ifndef BLOCK_REDEF
+#define BLOCK_REDEF
 #define IE_IBSS_PARAMETER_SET                  ((FullWifiInformationElementId)6)
 #define IE_COUNTRY                             ((FullWifiInformationElementId)7)
 #define IE_HOPPING_PATTERN_PARAMETERS          ((FullWifiInformationElementId)8)
@@ -86,9 +98,14 @@ typedef uint8_t FullWifiInformationElementId;
 // 49 is reserved in 802.11-2007
 #define IE_EXTENDED_SUPPORTED_RATES            ((FullWifiInformationElementId)50)
 // 51 to 126 are reserved in 802.11-2007
+#endif
+#ifndef IE_EXTENDED_CAPABILITIES
 #define IE_EXTENDED_CAPABILITIES               ((FullWifiInformationElementId)127)
+#endif
 // 128 to 220 are reserved in 802.11-2007
+#ifndef IE_VENDOR_SPECIFIC 
 #define IE_VENDOR_SPECIFIC                     ((FullWifiInformationElementId)221)
+#endif
 // 222 to 255 are reserved in 802.11-2007
 #endif /* IEID */
 
